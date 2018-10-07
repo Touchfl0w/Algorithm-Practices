@@ -1,7 +1,7 @@
 from random import randint
 from time import time
 
-def random_array(n, left, right):
+def random_array(n=10000, left=1, right=10000):
 	return [randint(left,right) for _ in range(n)]
 
 def nearly_ordered_array(n,switch_num):

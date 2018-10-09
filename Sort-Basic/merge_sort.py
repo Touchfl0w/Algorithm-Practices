@@ -2,6 +2,7 @@ from sort_helper import test_sort,random_array,nearly_ordered_array
 from insert_sort import insert_sort
 
 def __merge(array, left, mid, right):
+	print(array)
 	temp = array[left:right+1]
 	#新数组temp的左中右标记,充当常量
 	n = len(temp)
@@ -30,6 +31,7 @@ def __merge(array, left, mid, right):
 			j += 1
 
 		k += 1
+	print(array)
 
 #错误示范
 def __merge1(array, left, mid, right):
@@ -105,16 +107,37 @@ def merge_sort1(array):
 def merge_sort2(array):
 	__merge_sort2(array, 0, len(array)-1)
 
+def merge_sort_BU(array):
+	n = len(array)
+	sz = 2
+	while sz < n + 1:
+		
+		i = 0 
+		while i < n:
+			l1 = i
+			r1 = i+2*sz-1
+			if r1 > n -1:
+				r1 = n-1
+			m1 = l1 + (r1-l1) //2
+			__merge(array, l1, m1, r1)
+			i += 2*sz 
+
+		sz *= 2
+
 if __name__ == '__main__':
-	array = random_array()
-	array1 = array[:]
-	array2 = array[:]
-	array3 = nearly_ordered_array(10000, 1)
-	array4 = array3[:]
-	array5 = array3[:]
-	test_sort('merge_sort random_array', merge_sort, array)
-	test_sort('merge_sort1 random_array', merge_sort1, array1)
-	test_sort('merge_sort2 random_array', merge_sort2, array2)
-	test_sort('merge_sort nearly_ordered_array', merge_sort, array3)
-	test_sort('merge_sort1 nearly_ordered_array', merge_sort1, array4)
-	test_sort('merge_sort2 nearly_ordered_array', merge_sort2, array5)
+	# array = random_array()
+	# array1 = array[:]
+	# array2 = array[:]
+	# array3 = nearly_ordered_array(10000, 1)
+	# array4 = array3[:]
+	# array5 = array3[:]
+	# test_sort('merge_sort random_array', merge_sort, array)
+	# test_sort('merge_sort1 random_array', merge_sort1, array1)
+	# test_sort('merge_sort2 random_array', merge_sort2, array2)
+	# test_sort('merge_sort nearly_ordered_array', merge_sort, array3)
+	# test_sort('merge_sort1 nearly_ordered_array', merge_sort1, array4)
+	# test_sort('merge_sort2 nearly_ordered_array', merge_sort2, array5)
+	a = [4,3,56,2]
+	merge_sort_BU(a)
+	print(a)
+

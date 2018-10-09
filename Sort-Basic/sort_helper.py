@@ -32,4 +32,5 @@ def test_sort(sort_name, sort,array):
 		print('the ordinary array is : ',temp_array)
 		print('the result of array is : ',array)
 
-	print(sort_name + ' : '+ str(spend) + ' seconds')
+	else:
+		print('[success] ' + sort_name + ' : '+ str(spend) + ' seconds')

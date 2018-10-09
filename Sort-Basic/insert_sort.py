@@ -34,6 +34,24 @@ def insert_sort3(array):
 				break
 		array[j] = temp
 
+def insert_sort(array, l, r):
+	"""对数组的[l,r]范围进行插入排序"""
+	#外层遍历[l+1,r+1)
+	i = l+1
+	while i < r+1:
+		#内层遍历【i,l）
+		j = i
+		temp = array[i]
+		while j > l:
+			if temp < array[j-1]:
+				array[j] = array[j-1]
+				j = j-1
+			else:
+				break
+		array[j] = temp
+			
+		i += 1
+
 
 if __name__ == '__main__':
 	array1 = random_array(10000, 1, 10000)
